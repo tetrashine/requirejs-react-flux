@@ -1,0 +1,21 @@
+{
+  "name": "requirejs-react-flux",
+  "version": "1.0.0",
+  "description": "This is a React + Flux application implemented with RequireJS.",
+  "main": "index.js",
+  "dependencies": {
+    "flux": "^2.1.1",
+    "keymirror": "^0.1.1",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "requirejs": "^2.1.22",
+    "requirejs-babel": "^0.2.5",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
