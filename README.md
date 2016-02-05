@@ -6,15 +6,7 @@ I use [todos example from the official website](https://github.com/facebook/flux
 
 # Install
 
-package.json
-
-```
-{
-	"directory": "js/vendor"
-}
-```
-
-npm packages
+npm packages - package.json
 
 ```
   "dependencies": {
