@@ -1,17 +1,12 @@
-# RequireJs-React-Flux
+# requireJs-react-flux
 
 This is a React + Flux + es6 application implemented with RequireJS.
 
 I use [todos example from the official website](https://github.com/facebook/flux/tree/master/examples/flux-todomvc/) and it seems to work. You can give it a try.
 
-Example
-
-![http://i.imgur.com/1zBvCEq.png?1](http://i.imgur.com/1zBvCEq.png?1)
-
-
 # Install
 
-.bowerrc
+package.json
 
 ```
 {
@@ -19,35 +14,34 @@ Example
 }
 ```
 
-Bower packages
+npm packages
 
 ```
   "dependencies": {
-    "requirejs-react-jsx": "~0.14.1",
-    "requirejs": "~2.1.17",
-    "flux": "~2.0.2",
-    "eventEmitter": "~4.2.11",
-    "underscore": "~1.8.3"
-  }
+    "flux": "^2.1.1",
+    "keymirror": "^0.1.1",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "requirejs": "^2.1.22",
+    "requirejs-babel": "^0.2.5",
+    "underscore": "^1.8.3"
+  },
 
 ```
 
 Install
 
 ```
-$ bower install
+$ npm install
 ```
 
 
 # Usage
 
-Run your local server.
+    Run your local server.
 
-I use PHP server. (You can use other ways, like: Python's Simple HTTPServer) 
+I use MAMP on mac. (You can use other ways, like: Python's Simple HTTPServer) 
 
-```
-$ php -S localhost:9000
-```
 
 Flux will need `Node EventEmmit`,  `keyMirror`. But we are not in node environment(no npm) so these modules must be packaged in another way.
 
@@ -83,46 +77,46 @@ You can write ES6 syntax in this application.
 config.js
 
 ```
-requirejs.config({
-    baseUrl: 'js',
+require({
+    baseUrl: '.',
     paths: {
-        'react': 'vendor/react/react-with-addons',
-        'JSXTransformer': 'vendor/react/JSXTransformer',
-        'jsx': 'vendor/requirejs-react-jsx/jsx',
-        'text': 'vendor/requirejs-text/text',
-        'flux': 'vendor/flux/dist/Flux',
-        'EventEmitter': 'vendor/eventEmitter/EventEmitter',
-        'underscore': 'vendor/underscore/underscore',
-        'keyMirror': 'keyMirror',
-        'TodoStore': 'stores/TodoStore',
-        'AppDispatcher': 'dispatcher/AppDispatcher',
-        'TodoConstants': 'constants/TodoConstants',
-        'TodoActions': 'actions/TodoActions'
+        'app': 'js/app',
+        'react': 'node_modules/react/dist/react-with-addons',
+        'react-dom': 'node_modules/react-dom/dist/react-dom',
+        'babel': 'node_modules/requirejs-babel/browser',
+        'babel_polyfill': 'node_modules/requirejs-babel/polyfill.min',
+        'es6': 'node_modules/requirejs-babel/es6',
+        'flux': 'node_modules/flux/dist/Flux',
+        'EventEmitter': 'js/eventEmitter/eventEmitter',
+        'underscore': 'node_modules/underscore/underscore',
+        'keymirror': 'node_modules/keymirror/index',
+
+        'Footer': 'js/components/Footer',
+        'Header': 'js/components/Header',
+        'MainSection': 'js/components/MainSection',
+        'TodoApp': 'js/components/TodoApp',
+        'TodoItem': 'js/components/TodoItem',
+        'TodoTextInput': 'js/components/TodoTextInput',
+        'TodoStore': 'js/stores/TodoStore',
+        'TodoActions': 'js/actions/TodoActions',
+        'TodoConstants': 'js/constants/TodoConstants',
+        'AppDispatcher': 'js/dispatcher/AppDispatcher'
     },
     shim: {
-        'react': {
-            'exports': 'React'
-        },
-        'JSXTransformer': 'JSXTransformer'
+        babel: {
+            deps: ['babel_polyfill']
+        }
     },
     config: {
-        jsx: {
-            fileExtension: '.jsx',
-            transformOptions: {
-                harmony: true,
-                stripTypes: false,
-                inlineSourceMap: true
-            },
-            usePragma: false
+        babel: {
+            sourceMaps: "inline", // One of [false, 'inline', 'both']. See https://babeljs.io/docs/usage/options/
+            fileExtension: ".jsx" // Can be set to anything, like .es6 or .js. Defaults to .jsx
         }
     }
 });
-```
 
 
 # Building
-
-最後您可以透過 r.js 打包專案
 
 You can use r.js (RequireJS) to bundle your application.
 
@@ -133,11 +127,5 @@ $ r.js -o build.js
 
 # Notes
 
-It should be better to set up your application through [Webpack](http://webpack.github.io/).
-
-But if you don't want to use complicated config for Task Runner(Grunt/Gulp), you can try this application which don't need any Task Runner.
-
-In this applicaion, I can start writing React/Flux quickly. Just after setting up the config.js for RequireJS which doesn't need much time.
-
-If you encounter other questions, please email me. Thank you.
+Please email me if you encounter other questions. Thank you.
 
